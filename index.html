@@ -548,15 +548,15 @@
     <span class="eyebrow">ARP 2026 &middot; Rio de Energia Verde &middot; Consulta ao proponente</span>
     <h1>Registro fotográfico das instalações</h1>
     <p class="dek">
-      Estado das cabinas de medição das 174 UCs do Grupo A elegíveis ao ACL, por lote de licitação
+      Estado das cabinas de medição das 180 UCs do Grupo A elegíveis ao ACL, por lote de licitação
       (01 a 10) e código de instalação. Onde não houver foto registrada, esta consulta informa
       explicitamente <strong>"sem registro"</strong> — não é omissão do material.
     </p>
     <div class="stat-rail" id="stat-rail">
-      <div class="stat"><span class="n" id="stat-total">174</span><span class="label">UCs no filtro</span></div>
-      <div class="stat st-foto"><span class="n" id="stat-foto">40</span><span class="label">Com foto</span></div>
-      <div class="stat st-documento"><span class="n" id="stat-documento">77</span><span class="label">Com documento</span></div>
-      <div class="stat st-sem"><span class="n" id="stat-sem">57</span><span class="label">Sem registro</span></div>
+      <div class="stat"><span class="n" id="stat-total">180</span><span class="label">UCs no filtro</span></div>
+      <div class="stat st-foto"><span class="n" id="stat-foto">42</span><span class="label">Com foto</span></div>
+      <div class="stat st-documento"><span class="n" id="stat-documento">91</span><span class="label">Com documento</span></div>
+      <div class="stat st-sem"><span class="n" id="stat-sem">47</span><span class="label">Sem registro</span></div>
     </div>
   </header>
 
@@ -580,7 +580,7 @@
         <button type="button" class="chip-toggle t-sem" data-status="sem_registro" aria-pressed="true">Sem registro</button>
         <button type="button" class="clear-btn" id="btn-limpar">Limpar filtros</button>
       </div>
-      <span class="result-tally" id="result-tally">174 de 174 UCs</span>
+      <span class="result-tally" id="result-tally">180 de 180 UCs</span>
     </div>
   </div>
 
@@ -589,7 +589,7 @@
 
   <footer>
     <span>Fonte: FOTOS-ARP_2026.zip &middot; UC_Stats_v2.csv &middot; map_lote_parceiro.csv</span>
-    <span>174 UCs &middot; Lotes 01&ndash;10</span>
+    <span>180 UCs &middot; Lotes 01&ndash;10</span>
   </footer>
 
 </main>
@@ -897,8 +897,14 @@ const DADOS = [
     "orgao": "RIO DE JANEIRO SEC MUNICIPAL DE SAUDE",
     "lote": "01",
     "lote_desc": "Lote 01 - SMS AP1",
-    "arquivos": [],
-    "status": "sem_registro"
+    "arquivos": [
+      {
+        "tipo": "documento",
+        "arquivo": "fotos/400038806/400038806 - Centro Municipal de Saude Marcolino Candau.pdf",
+        "origem": "400038806 - Centro Municipal de Saúde Marcolino Candau.pdf"
+      }
+    ],
+    "status": "documento"
   },
   {
     "codigo": "400046272",
@@ -1418,8 +1424,14 @@ const DADOS = [
     "orgao": "RIO DE JANEIRO SEC MUNICIPAL DE SAUDE",
     "lote": "04",
     "lote_desc": "Lote 04 - SMS AP3 Demais",
-    "arquivos": [],
-    "status": "sem_registro"
+    "arquivos": [
+      {
+        "tipo": "documento",
+        "arquivo": "fotos/400076473/400076473 - Centro Municipal de Saude Eduardo Araujo Vilhena Leite.pdf",
+        "origem": "400076473 - Centro Municipal de Saude Eduardo Araujo Vilhena Leite.pdf"
+      }
+    ],
+    "status": "documento"
   },
   {
     "codigo": "400076490",
@@ -1579,8 +1591,14 @@ const DADOS = [
     "orgao": "RIO DE JANEIRO SEC MUNICIPAL DE SAUDE",
     "lote": "05",
     "lote_desc": "Lote 05 - SMS AP4",
-    "arquivos": [],
-    "status": "sem_registro"
+    "arquivos": [
+      {
+        "tipo": "documento",
+        "arquivo": "fotos/400082163/400082163 - Jovelina Perola Negra e UAA Elos das Racas.pdf",
+        "origem": "400082163 - Jovelina Pérola Negra e UAA Elos das Raças.pdf"
+      }
+    ],
+    "status": "documento"
   },
   {
     "codigo": "400082171",
@@ -1588,8 +1606,44 @@ const DADOS = [
     "orgao": "SEC MUN CONSERVACAO E SERV PUBLICOS",
     "lote": "10",
     "lote_desc": "Lote 10 - Infraestrutura Urbana",
-    "arquivos": [],
-    "status": "sem_registro"
+    "arquivos": [
+      {
+        "tipo": "foto",
+        "arquivo": "fotos/400082171/foto_01.jpg",
+        "origem": "1.jpeg"
+      },
+      {
+        "tipo": "foto",
+        "arquivo": "fotos/400082171/foto_02.jpg",
+        "origem": "2.jpeg"
+      },
+      {
+        "tipo": "foto",
+        "arquivo": "fotos/400082171/foto_03.jpg",
+        "origem": "3.jpeg"
+      },
+      {
+        "tipo": "foto",
+        "arquivo": "fotos/400082171/foto_04.jpg",
+        "origem": "4.jpeg"
+      },
+      {
+        "tipo": "foto",
+        "arquivo": "fotos/400082171/foto_05.jpg",
+        "origem": "5.jpeg"
+      },
+      {
+        "tipo": "foto",
+        "arquivo": "fotos/400082171/foto_06.jpg",
+        "origem": "6.jpeg"
+      },
+      {
+        "tipo": "foto",
+        "arquivo": "fotos/400082171/foto_07.jpg",
+        "origem": "7.jpeg"
+      }
+    ],
+    "status": "foto"
   },
   {
     "codigo": "400082953",
@@ -2495,8 +2549,14 @@ const DADOS = [
     "orgao": "RIO DE JANEIRO SEC MUNICIPAL DE SAUDE",
     "lote": "06",
     "lote_desc": "Lote 06 - SMS AP5",
-    "arquivos": [],
-    "status": "sem_registro"
+    "arquivos": [
+      {
+        "tipo": "documento",
+        "arquivo": "fotos/400094579/400094579 - CMS Augusto Boal.pdf",
+        "origem": "400094579 - CMS Augusto Boal.pdf"
+      }
+    ],
+    "status": "documento"
   },
   {
     "codigo": "400098752",
@@ -4394,8 +4454,14 @@ const DADOS = [
     "orgao": "MUNICIPIO DE RIO DE JANEIRO",
     "lote": "08",
     "lote_desc": "Lote 08 - Municipal Diversificado",
-    "arquivos": [],
-    "status": "sem_registro"
+    "arquivos": [
+      {
+        "tipo": "documento",
+        "arquivo": "fotos/420639689/420639689 - Arena Carioca Chacrinha.pdf",
+        "origem": "420639689 - ARENA CARIOCA CHACRINHA.pdf"
+      }
+    ],
+    "status": "documento"
   },
   {
     "codigo": "420648799",
@@ -4451,8 +4517,14 @@ const DADOS = [
     "orgao": "FUNDACAO INSTITUTO DAS AGUAS DO MUNICIPIO DO RIO DE JANEIRO",
     "lote": "10",
     "lote_desc": "Lote 10 - Infraestrutura Urbana",
-    "arquivos": [],
-    "status": "sem_registro"
+    "arquivos": [
+      {
+        "tipo": "documento",
+        "arquivo": "fotos/420807647/420807647 - Reservatorio Praca da Bandeira - entrada de energia.pdf",
+        "origem": "420807647 - RESERVATÓRIO PRAÇA DA BANDEIRA ENTRADA DE ENERGIA.pdf"
+      }
+    ],
+    "status": "documento"
   },
   {
     "codigo": "421082095",
@@ -4460,8 +4532,14 @@ const DADOS = [
     "orgao": "FUNDACAO INSTITUTO DAS AGUAS DO MUNICIPIO DO RIO DE JANEIRO",
     "lote": "10",
     "lote_desc": "Lote 10 - Infraestrutura Urbana",
-    "arquivos": [],
-    "status": "sem_registro"
+    "arquivos": [
+      {
+        "tipo": "documento",
+        "arquivo": "fotos/421082095/421082095 - Reservatorio Praca Niteroi - entrada de energia e transformador.pdf",
+        "origem": "421082095 - RESERVATÓRIO PRAÇA NITERÓI ENTRADA DE ENERGIA E Transformador.pdf"
+      }
+    ],
+    "status": "documento"
   },
   {
     "codigo": "421148537",
@@ -4469,8 +4547,14 @@ const DADOS = [
     "orgao": "FUNDACAO INSTITUTO DAS AGUAS DO MUNICIPIO DO RIO DE JANEIRO",
     "lote": "10",
     "lote_desc": "Lote 10 - Infraestrutura Urbana",
-    "arquivos": [],
-    "status": "sem_registro"
+    "arquivos": [
+      {
+        "tipo": "documento",
+        "arquivo": "fotos/421148537/421148537 - Reservatorio Praca Varnhagem - entrada de energia e transformador.pdf",
+        "origem": "421148537 -RESERVATÓRIO PRAÇA VARNHAGEM ENTRADA DE ENERGIA E Transformador.pdf"
+      }
+    ],
+    "status": "documento"
   },
   {
     "codigo": "421250716",
@@ -4660,6 +4744,116 @@ const DADOS = [
       }
     ],
     "status": "foto"
+  },
+  {
+    "codigo": "400090972",
+    "nome": "BIBLIOTECA MUNICIPAL",
+    "orgao": "SECRETARIA MUNICIPAL URBANISMO",
+    "lote": "08",
+    "lote_desc": "Lote 08 - Municipal Diversificado",
+    "arquivos": [
+      {
+        "tipo": "documento",
+        "arquivo": "fotos/400090972/400090972 - Biblioteca Municipal Joao do Rio.pdf",
+        "origem": "400090972 - BIBLIOTECA MUNICIPAL JOÃO DO RIO.pdf"
+      }
+    ],
+    "status": "documento"
+  },
+  {
+    "codigo": "400359971",
+    "nome": "CASAS CASADAS",
+    "orgao": "EMPRESA RIOFILME",
+    "lote": "08",
+    "lote_desc": "Lote 08 - Municipal Diversificado",
+    "arquivos": [
+      {
+        "tipo": "foto",
+        "arquivo": "fotos/400359971/foto_01.jpg",
+        "origem": "Chave seccionadora.jpeg"
+      },
+      {
+        "tipo": "foto",
+        "arquivo": "fotos/400359971/foto_02.jpg",
+        "origem": "Medidor de entrada de energia.jpeg"
+      },
+      {
+        "tipo": "foto",
+        "arquivo": "fotos/400359971/foto_03.jpg",
+        "origem": "Disjuntores 2.jpeg"
+      },
+      {
+        "tipo": "foto",
+        "arquivo": "fotos/400359971/foto_04.jpg",
+        "origem": "Disjuntores.jpeg"
+      },
+      {
+        "tipo": "foto",
+        "arquivo": "fotos/400359971/foto_05.jpg",
+        "origem": "Transformador.jpeg"
+      }
+    ],
+    "status": "foto"
+  },
+  {
+    "codigo": "420634460",
+    "nome": "CER BARRA DA TIJUCA",
+    "orgao": "RIO DE JANEIRO SEC MUNICIPAL DE SAUDE",
+    "lote": "05",
+    "lote_desc": "Lote 05 - SMS AP4",
+    "arquivos": [
+      {
+        "tipo": "documento",
+        "arquivo": "fotos/420634460/420634460 - CER Barra - Coordenacao de Emergencia Regional.pdf",
+        "origem": "420634460 - Cordenação de Emergência Regional - CER Barra.pdf"
+      }
+    ],
+    "status": "documento"
+  },
+  {
+    "codigo": "420365298",
+    "nome": "UPA 24 - CIDADE DE DEUS",
+    "orgao": "RIO DE JANEIRO SEC MUNICIPAL DE SAUDE",
+    "lote": "05",
+    "lote_desc": "Lote 05 - SMS AP4",
+    "arquivos": [
+      {
+        "tipo": "documento",
+        "arquivo": "fotos/420365298/420365298 - UPA Cidade de Deus.pdf",
+        "origem": "420365298 - UPA Cidade de Deus.pdf"
+      }
+    ],
+    "status": "documento"
+  },
+  {
+    "codigo": "420634492",
+    "nome": "UPA ROCHA MIRANDA",
+    "orgao": "RIO DE JANEIRO SEC MUNICIPAL DE SAUDE",
+    "lote": "04",
+    "lote_desc": "Lote 04 - SMS AP3 Demais",
+    "arquivos": [
+      {
+        "tipo": "documento",
+        "arquivo": "fotos/420634492/420634492 - UPA Rocha Miranda.pdf",
+        "origem": "420634492 - UPA Rocha Miranda.pdf"
+      }
+    ],
+    "status": "documento"
+  },
+  {
+    "codigo": "420406052",
+    "nome": "UPA SENADOR CAMARA",
+    "orgao": "RIO DE JANEIRO SEC MUNICIPAL DE SAUDE",
+    "lote": "06",
+    "lote_desc": "Lote 06 - SMS AP5",
+    "arquivos": [
+      {
+        "tipo": "documento",
+        "arquivo": "fotos/420406052/420406052 - UPA Senador Camara.pdf",
+        "origem": "0420406052 - UPA Senador Camará.pdf"
+      }
+    ],
+    "status": "documento"
   }
 ];
 
