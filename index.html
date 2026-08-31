@@ -564,9 +564,9 @@
       explicitamente <strong>"sem registro"</strong> — não é omissão do material.
     </p>
     <div class="stat-rail" id="stat-rail">
-      <div class="stat"><span class="n" id="stat-total">180</span><span class="label">UCs no filtro</span></div>
-      <div class="stat st-foto"><span class="n" id="stat-foto">42</span><span class="label">Com foto</span></div>
-      <div class="stat st-documento"><span class="n" id="stat-documento">91</span><span class="label">Com documento</span></div>
+      <div class="stat"><span class="n" id="stat-total">174</span><span class="label">UCs no filtro</span></div>
+      <div class="stat st-foto"><span class="n" id="stat-foto">41</span><span class="label">Com foto</span></div>
+      <div class="stat st-documento"><span class="n" id="stat-documento">86</span><span class="label">Com documento</span></div>
       <div class="stat st-sem"><span class="n" id="stat-sem">47</span><span class="label">Sem registro</span></div>
     </div>
   </header>
@@ -583,7 +583,7 @@
         <label for="f-escopo">Escopo</label>
         <select id="f-escopo">
           <option value="">Todas &mdash; ARP + correlatas</option>
-          <option value="arp">Escopo ARP (174)</option>
+          <option value="arp" selected>Escopo ARP (174)</option>
           <option value="correlatas">Correlatas &mdash; fora do escopo (6)</option>
         </select>
       </div>
@@ -599,7 +599,7 @@
         <button type="button" class="chip-toggle t-sem" data-status="sem_registro" aria-pressed="true">Sem registro</button>
         <button type="button" class="clear-btn" id="btn-limpar">Limpar filtros</button>
       </div>
-      <span class="result-tally" id="result-tally">180 de 180 UCs — 174 da ARP + 6 correlatas</span>
+      <span class="result-tally" id="result-tally">174 de 180 UCs</span>
     </div>
   </div>
 
@@ -5099,7 +5099,7 @@ selEscopo.addEventListener("change", aplicarFiltros);
 inpBusca.addEventListener("input", aplicarFiltros);
 document.getElementById("btn-limpar").addEventListener("click", () => {
   selLote.value = "";
-  selEscopo.value = "";
+  selEscopo.value = "arp";
   inpBusca.value = "";
   toggles.forEach((t) => t.setAttribute("aria-pressed", "true"));
   aplicarFiltros();
