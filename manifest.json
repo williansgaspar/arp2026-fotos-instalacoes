@@ -4155,7 +4155,8 @@
         "origem": "400090972 - BIBLIOTECA MUNICIPAL JOÃO DO RIO.pdf"
       }
     ],
-    "status": "documento"
+    "status": "documento",
+    "escopo_arp": false
   },
   {
     "codigo": "400359971",
@@ -4190,7 +4191,8 @@
         "origem": "Transformador.jpeg"
       }
     ],
-    "status": "foto"
+    "status": "foto",
+    "escopo_arp": false
   },
   {
     "codigo": "420634460",
@@ -4205,7 +4207,8 @@
         "origem": "420634460 - Cordenação de Emergência Regional - CER Barra.pdf"
       }
     ],
-    "status": "documento"
+    "status": "documento",
+    "escopo_arp": false
   },
   {
     "codigo": "420365298",
@@ -4220,7 +4223,8 @@
         "origem": "420365298 - UPA Cidade de Deus.pdf"
       }
     ],
-    "status": "documento"
+    "status": "documento",
+    "escopo_arp": false
   },
   {
     "codigo": "420634492",
@@ -4235,7 +4239,8 @@
         "origem": "420634492 - UPA Rocha Miranda.pdf"
       }
     ],
-    "status": "documento"
+    "status": "documento",
+    "escopo_arp": false
   },
   {
     "codigo": "420406052",
@@ -4250,6 +4255,7 @@
         "origem": "0420406052 - UPA Senador Camará.pdf"
       }
     ],
-    "status": "documento"
+    "status": "documento",
+    "escopo_arp": false
   }
 ]

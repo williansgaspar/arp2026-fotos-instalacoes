@@ -403,6 +403,16 @@
   .chip.foto { background: var(--verified-soft); color: var(--verified); }
   .chip.documento { background: var(--copper-soft); color: var(--copper); }
   .chip.sem { background: var(--critical-soft); color: var(--critical); }
+  .chip.fora-arp { background: var(--ink); color: var(--paper-raised); }
+  .fora-arp-aviso {
+    margin: 0 0 0.8rem;
+    padding: 0.55rem 0.7rem;
+    border-left: 3px solid var(--ink);
+    background: var(--paper-sunken);
+    font-size: 0.78rem;
+    line-height: 1.45;
+    color: var(--ink-soft);
+  }
 
   .uc-body {
     padding: 0 0.9rem 1rem;
@@ -548,8 +558,9 @@
     <span class="eyebrow">ARP 2026 &middot; Rio de Energia Verde &middot; Consulta ao proponente</span>
     <h1>Registro fotográfico das instalações</h1>
     <p class="dek">
-      Estado das cabinas de medição das 180 UCs do Grupo A elegíveis ao ACL, por lote de licitação
-      (01 a 10) e código de instalação. Onde não houver foto registrada, esta consulta informa
+      Estado das cabinas de medição das 174 UCs do Grupo A elegíveis ao ACL no escopo da ARP 2026, por lote de
+      licitação (01 a 10) e código de instalação. Constam ainda 6 UCs correlatas fora do escopo
+      licitado, sinalizadas com o selo "Fora do escopo ARP". Onde não houver foto registrada, esta consulta informa
       explicitamente <strong>"sem registro"</strong> — não é omissão do material.
     </p>
     <div class="stat-rail" id="stat-rail">
@@ -580,7 +591,7 @@
         <button type="button" class="chip-toggle t-sem" data-status="sem_registro" aria-pressed="true">Sem registro</button>
         <button type="button" class="clear-btn" id="btn-limpar">Limpar filtros</button>
       </div>
-      <span class="result-tally" id="result-tally">180 de 180 UCs</span>
+      <span class="result-tally" id="result-tally">180 de 180 UCs — 174 da ARP + 6 correlatas</span>
     </div>
   </div>
 
@@ -589,7 +600,7 @@
 
   <footer>
     <span>Fonte: FOTOS-ARP_2026.zip &middot; UC_Stats_v2.csv &middot; map_lote_parceiro.csv</span>
-    <span>180 UCs &middot; Lotes 01&ndash;10</span>
+    <span>174 UCs da ARP + 6 correlatas &middot; Lotes 01&ndash;10</span>
   </footer>
 
 </main>
@@ -4758,7 +4769,8 @@ const DADOS = [
         "origem": "400090972 - BIBLIOTECA MUNICIPAL JOÃO DO RIO.pdf"
       }
     ],
-    "status": "documento"
+    "status": "documento",
+    "escopo_arp": false
   },
   {
     "codigo": "400359971",
@@ -4793,7 +4805,8 @@ const DADOS = [
         "origem": "Transformador.jpeg"
       }
     ],
-    "status": "foto"
+    "status": "foto",
+    "escopo_arp": false
   },
   {
     "codigo": "420634460",
@@ -4808,7 +4821,8 @@ const DADOS = [
         "origem": "420634460 - Cordenação de Emergência Regional - CER Barra.pdf"
       }
     ],
-    "status": "documento"
+    "status": "documento",
+    "escopo_arp": false
   },
   {
     "codigo": "420365298",
@@ -4823,7 +4837,8 @@ const DADOS = [
         "origem": "420365298 - UPA Cidade de Deus.pdf"
       }
     ],
-    "status": "documento"
+    "status": "documento",
+    "escopo_arp": false
   },
   {
     "codigo": "420634492",
@@ -4838,7 +4853,8 @@ const DADOS = [
         "origem": "420634492 - UPA Rocha Miranda.pdf"
       }
     ],
-    "status": "documento"
+    "status": "documento",
+    "escopo_arp": false
   },
   {
     "codigo": "420406052",
@@ -4853,7 +4869,8 @@ const DADOS = [
         "origem": "0420406052 - UPA Senador Camará.pdf"
       }
     ],
-    "status": "documento"
+    "status": "documento",
+    "escopo_arp": false
   }
 ];
 
@@ -4919,7 +4936,11 @@ function atualizarResumo(lista) {
   document.getElementById("stat-foto").textContent = lista.filter((u) => u.status === "foto").length;
   document.getElementById("stat-documento").textContent = lista.filter((u) => u.status === "documento").length;
   document.getElementById("stat-sem").textContent = lista.filter((u) => u.status === "sem_registro").length;
-  tallyEl.textContent = `${lista.length} de ${DADOS.length} UCs`;
+  const nArp = lista.filter((u) => u.escopo_arp !== false).length;
+  const nExtra = lista.length - nArp;
+  tallyEl.textContent = nExtra
+    ? `${lista.length} de ${DADOS.length} UCs — ${nArp} da ARP + ${nExtra} correlatas`
+    : `${lista.length} de ${DADOS.length} UCs`;
 }
 
 function loteLabel(codigo) {
@@ -5004,6 +5025,7 @@ function renderizar(lista) {
       <span class="nome">${u.nome}</span>
       <span class="orgao-lote">${loteLabel(u.lote)}</span>
       <span class="chip ${STATUS_CHIP_CLASS[u.status]}">${STATUS_LABEL[u.status]}</span>
+      ${u.escopo_arp === false ? '<span class="chip fora-arp" title="UC não integrante do rol de 174 UCs licitadas na ARP 2026">Fora do escopo ARP</span>' : ""}
     `;
     details.appendChild(summary);
 
@@ -5012,6 +5034,12 @@ function renderizar(lista) {
     let built = false;
     details.addEventListener("toggle", () => {
       if (details.open && !built) {
+        if (u.escopo_arp === false) {
+          const aviso = document.createElement("p");
+          aviso.className = "fora-arp-aviso";
+          aviso.textContent = "UC correlata — não integra o rol de 174 UCs licitadas na ARP 2026. Registro fotográfico incluído apenas para referência.";
+          body.appendChild(aviso);
+        }
         body.appendChild(corpoParaUC(u));
         built = true;
       }
