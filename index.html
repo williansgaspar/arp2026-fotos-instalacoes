@@ -580,6 +580,14 @@
         </select>
       </div>
       <div class="field">
+        <label for="f-escopo">Escopo</label>
+        <select id="f-escopo">
+          <option value="">Todas &mdash; ARP + correlatas</option>
+          <option value="arp">Escopo ARP (174)</option>
+          <option value="correlatas">Correlatas &mdash; fora do escopo (6)</option>
+        </select>
+      </div>
+      <div class="field">
         <label for="f-busca">Código de instalação ou nome</label>
         <input id="f-busca" type="text" placeholder="ex.: 400023477, CIEP..." autocomplete="off" />
       </div>
@@ -4898,6 +4906,7 @@ for (const [valor, rotulo] of LOTES) {
   selLote.appendChild(opt);
 }
 
+const selEscopo = document.getElementById("f-escopo");
 const inpBusca = document.getElementById("f-busca");
 const toggles = Array.from(document.querySelectorAll(".chip-toggle"));
 const listaEl = document.getElementById("uc-list");
@@ -4914,11 +4923,14 @@ function statusAtivos() {
 
 function aplicarFiltros() {
   const lote = selLote.value;
+  const escopo = selEscopo.value;
   const termo = normalizar(inpBusca.value.trim());
   const ativos = statusAtivos();
 
   const filtrados = DADOS.filter((u) => {
     if (lote && u.lote !== lote) return false;
+    if (escopo === "arp" && u.escopo_arp === false) return false;
+    if (escopo === "correlatas" && u.escopo_arp !== false) return false;
     if (!ativos.includes(u.status)) return false;
     if (termo) {
       const alvo = normalizar(`${u.codigo} ${u.nome} ${u.orgao}`);
@@ -5083,9 +5095,11 @@ toggles.forEach((t) => {
   });
 });
 selLote.addEventListener("change", aplicarFiltros);
+selEscopo.addEventListener("change", aplicarFiltros);
 inpBusca.addEventListener("input", aplicarFiltros);
 document.getElementById("btn-limpar").addEventListener("click", () => {
   selLote.value = "";
+  selEscopo.value = "";
   inpBusca.value = "";
   toggles.forEach((t) => t.setAttribute("aria-pressed", "true"));
   aplicarFiltros();
