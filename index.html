@@ -559,7 +559,7 @@
     <h1>Registro fotográfico das instalações</h1>
     <p class="dek">
       Estado das cabinas de medição das 174 UCs do Grupo A elegíveis ao ACL no escopo da ARP 2026, por lote de
-      licitação (01 a 10) e código de instalação. Constam ainda 6 UCs correlatas fora do escopo
+      licitação (01 a 10) e código de instalação. Constam ainda 7 UCs correlatas fora do escopo
       licitado, sinalizadas com o selo "Fora do escopo ARP". Onde não houver foto registrada, esta consulta informa
       explicitamente <strong>"sem registro"</strong> — não é omissão do material.
     </p>
@@ -584,7 +584,7 @@
         <select id="f-escopo">
           <option value="">Todas &mdash; ARP + correlatas</option>
           <option value="arp" selected>Escopo ARP (174)</option>
-          <option value="correlatas">Correlatas &mdash; fora do escopo (6)</option>
+          <option value="correlatas">Correlatas &mdash; fora do escopo (7)</option>
         </select>
       </div>
       <div class="field">
@@ -599,7 +599,7 @@
         <button type="button" class="chip-toggle t-sem" data-status="sem_registro" aria-pressed="true">Sem registro</button>
         <button type="button" class="clear-btn" id="btn-limpar">Limpar filtros</button>
       </div>
-      <span class="result-tally" id="result-tally">174 de 180 UCs</span>
+      <span class="result-tally" id="result-tally">174 de 181 UCs</span>
     </div>
   </div>
 
@@ -608,7 +608,7 @@
 
   <footer>
     <span>Fonte: FOTOS-ARP_2026.zip &middot; UC_Stats_v2.csv &middot; map_lote_parceiro.csv</span>
-    <span>174 UCs da ARP + 6 correlatas &middot; Lotes 01&ndash;10</span>
+    <span>174 UCs da ARP + 7 correlatas &middot; Lotes 01&ndash;10</span>
   </footer>
 
 </main>
@@ -4891,6 +4891,23 @@ const DADOS = [
     ],
     "status": "documento",
     "escopo_arp": false
+  },
+  {
+    "codigo": "420001779",
+    "nome": "H.M ALVARO RAMOS",
+    "orgao": "RIO DE JANEIRO SEC MUNICIPAL DE SAUDE",
+    "lote": "05",
+    "lote_desc": "Lote 05 - SMS AP4",
+    "arquivos": [
+      {
+        "tipo": "documento",
+        "arquivo": "fotos/420001779/420001779 - H.M Alvaro Ramos.pdf",
+        "origem": "420001779 - H.M Alvaro Ramos.pdf"
+      }
+    ],
+    "status": "documento",
+    "escopo_arp": false,
+    "nota": "UC já migrada ao ACL e fora do rol da ARP 2026 — registro incluído apenas para referência. O arquivo de origem no Drive está rotulado como \"IMASJM Juliano Moreira\"; o nome cadastral da instalação 420001779 é H.M. Álvaro Ramos (mesmo campus da Colônia Juliano Moreira, Jacarepaguá)."
   }
 ];
 
@@ -5073,7 +5090,7 @@ function renderizar(lista) {
         if (u.escopo_arp === false) {
           const aviso = document.createElement("p");
           aviso.className = "fora-arp-aviso";
-          aviso.textContent = "UC correlata — não integra o rol de 174 UCs licitadas na ARP 2026. Registro fotográfico incluído apenas para referência.";
+          aviso.textContent = u.nota || "UC correlata — não integra o rol de 174 UCs licitadas na ARP 2026. Registro fotográfico incluído apenas para referência.";
           body.appendChild(aviso);
         }
         body.appendChild(corpoParaUC(u));

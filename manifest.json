@@ -4269,5 +4269,22 @@
     ],
     "status": "documento",
     "escopo_arp": false
+  },
+  {
+    "codigo": "420001779",
+    "nome": "H.M ALVARO RAMOS",
+    "orgao": "RIO DE JANEIRO SEC MUNICIPAL DE SAUDE",
+    "lote": "05",
+    "lote_desc": "Lote 05 - SMS AP4",
+    "arquivos": [
+      {
+        "tipo": "documento",
+        "arquivo": "fotos/420001779/420001779 - H.M Alvaro Ramos.pdf",
+        "origem": "420001779 - H.M Alvaro Ramos.pdf"
+      }
+    ],
+    "status": "documento",
+    "escopo_arp": false,
+    "nota": "UC já migrada ao ACL e fora do rol da ARP 2026 — registro incluído apenas para referência. O arquivo de origem no Drive está rotulado como \"IMASJM Juliano Moreira\"; o nome cadastral da instalação 420001779 é H.M. Álvaro Ramos (mesmo campus da Colônia Juliano Moreira, Jacarepaguá)."
   }
 ]
