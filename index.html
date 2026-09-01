@@ -559,8 +559,7 @@
     <h1>Registro fotográfico das instalações</h1>
     <p class="dek">
       Estado das cabinas de medição das 174 UCs do Grupo A elegíveis ao ACL no escopo da ARP 2026, por lote de
-      licitação (01 a 10) e código de instalação. Constam ainda 7 UCs correlatas fora do escopo
-      licitado, sinalizadas com o selo "Fora do escopo ARP". Onde não houver foto registrada, esta consulta informa
+      licitação (01 a 10) e código de instalação. Onde não houver foto registrada, esta consulta informa
       explicitamente <strong>"sem registro"</strong> — não é omissão do material.
     </p>
     <div class="stat-rail" id="stat-rail">
@@ -580,14 +579,6 @@
         </select>
       </div>
       <div class="field">
-        <label for="f-escopo">Escopo</label>
-        <select id="f-escopo">
-          <option value="">Todas &mdash; ARP + correlatas</option>
-          <option value="arp" selected>Escopo ARP (174)</option>
-          <option value="correlatas">Correlatas &mdash; fora do escopo (7)</option>
-        </select>
-      </div>
-      <div class="field">
         <label for="f-busca">Código de instalação ou nome</label>
         <input id="f-busca" type="text" placeholder="ex.: 400023477, CIEP..." autocomplete="off" />
       </div>
@@ -599,7 +590,7 @@
         <button type="button" class="chip-toggle t-sem" data-status="sem_registro" aria-pressed="true">Sem registro</button>
         <button type="button" class="clear-btn" id="btn-limpar">Limpar filtros</button>
       </div>
-      <span class="result-tally" id="result-tally">174 de 181 UCs</span>
+      <span class="result-tally" id="result-tally">174 de 174 UCs</span>
     </div>
   </div>
 
@@ -608,7 +599,7 @@
 
   <footer>
     <span>Fonte: FOTOS-ARP_2026.zip &middot; UC_Stats_v2.csv &middot; map_lote_parceiro.csv</span>
-    <span>174 UCs da ARP + 7 correlatas &middot; Lotes 01&ndash;10</span>
+    <span>174 UCs da ARP &middot; Lotes 01&ndash;10</span>
   </footer>
 
 </main>
@@ -4935,7 +4926,9 @@ for (const [valor, rotulo] of LOTES) {
   selLote.appendChild(opt);
 }
 
-const selEscopo = document.getElementById("f-escopo");
+// Escopo congelado na ARP_2026_ACL: a consulta pública mostra só as 174 UCs
+// licitadas. As 7 correlatas seguem no DADOS/manifest para auditoria interna.
+const ESCOPO_FIXO = "arp";
 const inpBusca = document.getElementById("f-busca");
 const toggles = Array.from(document.querySelectorAll(".chip-toggle"));
 const listaEl = document.getElementById("uc-list");
@@ -4952,7 +4945,7 @@ function statusAtivos() {
 
 function aplicarFiltros() {
   const lote = selLote.value;
-  const escopo = selEscopo.value;
+  const escopo = ESCOPO_FIXO;
   const termo = normalizar(inpBusca.value.trim());
   const ativos = statusAtivos();
 
@@ -4974,16 +4967,14 @@ function aplicarFiltros() {
   atualizarResumo(filtrados);
 }
 
+const TOTAL_ARP = DADOS.filter((u) => u.escopo_arp !== false).length;
+
 function atualizarResumo(lista) {
   document.getElementById("stat-total").textContent = lista.length;
   document.getElementById("stat-foto").textContent = lista.filter((u) => u.status === "foto").length;
   document.getElementById("stat-documento").textContent = lista.filter((u) => u.status === "documento").length;
   document.getElementById("stat-sem").textContent = lista.filter((u) => u.status === "sem_registro").length;
-  const nArp = lista.filter((u) => u.escopo_arp !== false).length;
-  const nExtra = lista.length - nArp;
-  tallyEl.textContent = nExtra
-    ? `${lista.length} de ${DADOS.length} UCs — ${nArp} da ARP + ${nExtra} correlatas`
-    : `${lista.length} de ${DADOS.length} UCs`;
+  tallyEl.textContent = `${lista.length} de ${TOTAL_ARP} UCs`;
 }
 
 function loteLabel(codigo) {
@@ -5136,11 +5127,9 @@ toggles.forEach((t) => {
   });
 });
 selLote.addEventListener("change", aplicarFiltros);
-selEscopo.addEventListener("change", aplicarFiltros);
 inpBusca.addEventListener("input", aplicarFiltros);
 document.getElementById("btn-limpar").addEventListener("click", () => {
   selLote.value = "";
-  selEscopo.value = "arp";
   inpBusca.value = "";
   toggles.forEach((t) => t.setAttribute("aria-pressed", "true"));
   aplicarFiltros();
