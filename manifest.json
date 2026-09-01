@@ -240,8 +240,14 @@
     "orgao": "MUNICIPIO DE RIO DE JANEIRO",
     "lote": "08",
     "lote_desc": "Lote 08 - Municipal Diversificado",
-    "arquivos": [],
-    "status": "sem_registro"
+    "arquivos": [
+      {
+        "tipo": "documento",
+        "arquivo": "fotos/400026999/400026999 - MUSEU HISTÓRICO DA CIDADE.pdf",
+        "origem": "400026999 - MUSEU HISTÓRICO DA CIDADE.pdf"
+      }
+    ],
+    "status": "documento"
   },
   {
     "codigo": "400033677",
@@ -2069,8 +2075,14 @@
     "orgao": "SECRETARIA MUNICIPAL ASSISTENCIA SOCIAL",
     "lote": "09",
     "lote_desc": "Lote 09 - Seguranca e Social",
-    "arquivos": [],
-    "status": "sem_registro"
+    "arquivos": [
+      {
+        "tipo": "documento",
+        "arquivo": "fotos/400102717/400102717 - Subestação Completo Ilha do Governador - Google Docs.pdf",
+        "origem": "400102717 - Subestação Completo Ilha do Governador - Google Docs.pdf"
+      }
+    ],
+    "status": "documento"
   },
   {
     "codigo": "400102733",

@@ -566,8 +566,8 @@
     <div class="stat-rail" id="stat-rail">
       <div class="stat"><span class="n" id="stat-total">174</span><span class="label">UCs no filtro</span></div>
       <div class="stat st-foto"><span class="n" id="stat-foto">41</span><span class="label">Com foto</span></div>
-      <div class="stat st-documento"><span class="n" id="stat-documento">86</span><span class="label">Com documento</span></div>
-      <div class="stat st-sem"><span class="n" id="stat-sem">47</span><span class="label">Sem registro</span></div>
+      <div class="stat st-documento"><span class="n" id="stat-documento">88</span><span class="label">Com documento</span></div>
+      <div class="stat st-sem"><span class="n" id="stat-sem">45</span><span class="label">Sem registro</span></div>
     </div>
   </header>
 
@@ -862,8 +862,14 @@ const DADOS = [
     "orgao": "MUNICIPIO DE RIO DE JANEIRO",
     "lote": "08",
     "lote_desc": "Lote 08 - Municipal Diversificado",
-    "arquivos": [],
-    "status": "sem_registro"
+    "arquivos": [
+      {
+        "tipo": "documento",
+        "arquivo": "fotos/400026999/400026999 - MUSEU HISTÓRICO DA CIDADE.pdf",
+        "origem": "400026999 - MUSEU HISTÓRICO DA CIDADE.pdf"
+      }
+    ],
+    "status": "documento"
   },
   {
     "codigo": "400033677",
@@ -2691,8 +2697,14 @@ const DADOS = [
     "orgao": "SECRETARIA MUNICIPAL ASSISTENCIA SOCIAL",
     "lote": "09",
     "lote_desc": "Lote 09 - Seguranca e Social",
-    "arquivos": [],
-    "status": "sem_registro"
+    "arquivos": [
+      {
+        "tipo": "documento",
+        "arquivo": "fotos/400102717/400102717 - Subestação Completo Ilha do Governador - Google Docs.pdf",
+        "origem": "400102717 - Subestação Completo Ilha do Governador - Google Docs.pdf"
+      }
+    ],
+    "status": "documento"
   },
   {
     "codigo": "400102733",
@@ -4928,7 +4940,9 @@ function aplicarFiltros() {
   const ativos = statusAtivos();
 
   const filtrados = DADOS.filter((u) => {
-    if (lote && u.lote !== lote) return false;
+    // Correlatas (fora do escopo ARP) não integram nenhum lote da licitação:
+    // o campo lote nelas é apenas o segmento herdado do órgão/AP.
+    if (lote && (u.escopo_arp === false || u.lote !== lote)) return false;
     if (escopo === "arp" && u.escopo_arp === false) return false;
     if (escopo === "correlatas" && u.escopo_arp !== false) return false;
     if (!ativos.includes(u.status)) return false;
@@ -4958,6 +4972,16 @@ function atualizarResumo(lista) {
 function loteLabel(codigo) {
   const found = LOTES.find(([v]) => v === codigo);
   return found ? found[1] : `Lote ${codigo}`;
+}
+
+// UCs no escopo da ARP exibem o lote da licitação; correlatas exibem apenas o
+// segmento (órgão/AP) — elas não pertencem a lote nenhum do edital.
+function loteOuSegmento(u) {
+  const full = loteLabel(u.lote);
+  if (u.escopo_arp === false) {
+    return `Segmento: ${full.replace(/^Lote\s+\S+\s+[—-]\s+/, "")}`;
+  }
+  return full;
 }
 
 function corpoParaUC(u) {
@@ -5035,7 +5059,7 @@ function renderizar(lista) {
       <span class="disclosure">▸</span>
       <span class="codigo">${u.codigo}</span>
       <span class="nome">${u.nome}</span>
-      <span class="orgao-lote">${loteLabel(u.lote)}</span>
+      <span class="orgao-lote">${loteOuSegmento(u)}</span>
       <span class="chip ${STATUS_CHIP_CLASS[u.status]}">${STATUS_LABEL[u.status]}</span>
       ${u.escopo_arp === false ? '<span class="chip fora-arp" title="UC não integrante do rol de 174 UCs licitadas na ARP 2026">Fora do escopo ARP</span>' : ""}
     `;
