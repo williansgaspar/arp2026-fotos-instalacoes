@@ -22,6 +22,20 @@ tarefa em que acontece.
 
 ---
 
+## 2026-09-26
+
+### Alteração (segurança) — Commits assinados e ligados ao perfil GitHub
+- **O que:** a partir de agora, os commits feitos no XPS saem **assinados** com uma chave SSH
+  guardada no cofre **Bitwarden** e com o e-mail privado do GitHub
+  (`25888051+williansgaspar@users.noreply.github.com`), aparecendo como **Verified** e ligados
+  ao perfil `williansgaspar`. Vale para este repositório pela configuração global do git; nada
+  no código mudou. Os commits anteriores (e-mail `williansgaspar@x2p34.onmicrosoft.com`, que não
+  estava cadastrado no GitHub) continuam como estão.
+- **Por quê:** rastreabilidade de autoria.
+- **Quando:** 2026-09-26.
+- **Quem:** Willians Gaspar, via Claude Code.
+- **Referência:** `16_Plataforma_App/SEGURANCA_CREDENCIAIS.md`.
+
 ## 2026-09-05
 
 ### Adição — Este arquivo (prática de auditoria)
